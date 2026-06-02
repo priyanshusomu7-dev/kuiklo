@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
@@ -46,32 +45,11 @@ export default function Navbar() {
       >
         {/* LEFT — Logo */}
         <Link
-          href="#"
-          className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1C1C1C] focus-visible:ring-offset-2 rounded"
-          aria-label="Kuiklo — back to top"
+          href="/"
+          className="flex items-center gap-1 text-xl font-extrabold text-[#1C1C1C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1C1C1C] focus-visible:ring-offset-2 rounded"
+          aria-label="Kuiklo — home"
         >
-          <span className="relative h-8 w-28 block">
-            <Image
-              src="/images/logo.png"
-              alt="Kuiklo"
-              fill
-              priority
-              className="object-contain object-left"
-              onError={(e) => {
-                (e.currentTarget as HTMLImageElement).style.display = "none";
-                const fallback = document.getElementById("logo-fallback");
-                if (fallback) fallback.style.display = "flex";
-              }}
-            />
-          </span>
-          <span
-            id="logo-fallback"
-            className="hidden items-center gap-1 text-[22px] font-extrabold leading-none text-[#1C1C1C]"
-            aria-hidden="true"
-          >
-            <span className="text-green-500">⚡</span>
-            Kuiklo
-          </span>
+          <span className="text-[#0C831F]">⚡</span> Kuiklo
         </Link>
 
         {/* CENTER — Nav Links (desktop only) */}
@@ -80,7 +58,15 @@ export default function Navbar() {
             <li key={href}>
               <a
                 href={href}
-                className="text-sm font-medium text-[#666666] transition-colors duration-200 hover:text-[#1C1C1C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1C1C1C] focus-visible:ring-offset-2 rounded"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const id = href.replace("#", "");
+                  const element = document.getElementById(id);
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }}
+                className="text-sm font-medium text-[#666666] transition-colors duration-200 hover:text-[#0C831F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1C1C1C] focus-visible:ring-offset-2 rounded cursor-pointer"
               >
                 {label}
               </a>
@@ -91,7 +77,14 @@ export default function Navbar() {
         {/* RIGHT — CTA Button */}
         <a
           href="#download"
-          className="inline-flex items-center justify-center rounded-[50px] bg-[#1C1C1C] px-[22px] py-[10px] text-sm font-semibold text-white transition-all duration-200 hover:bg-[#333333] hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1C1C1C] focus-visible:ring-offset-2"
+          onClick={(e) => {
+            e.preventDefault();
+            const element = document.getElementById("download");
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          }}
+          className="inline-flex items-center justify-center rounded-[50px] bg-[#1C1C1C] px-[22px] py-[10px] text-sm font-semibold text-white transition-all duration-200 hover:bg-[#0C831F] hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1C1C1C] focus-visible:ring-offset-2 cursor-pointer"
         >
           Download App
         </a>
