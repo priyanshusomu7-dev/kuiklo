@@ -22,7 +22,7 @@ const steps: Step[] = [
     icon: "📱",
     title: "Open the App",
     description:
-      "Download Kuiklo on Android or iOS. Enter your Patna address and instantly browse 2,000+ products available near you.",
+      "Download Kuiklo on Android or iOS. Enter your address and instantly browse 2,000+ products available in your area.",
   },
   {
     number: "02",
@@ -36,7 +36,7 @@ const steps: Step[] = [
     icon: "⚡",
     title: "Delivered in 10 Min",
     description:
-      "Our dark store network across Patna ensures your order leaves instantly and arrives at your door in under 10 minutes.",
+      "Our dark store network across your city ensures your order leaves instantly and arrives at your door in under 10 minutes.",
   },
 ];
 

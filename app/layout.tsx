@@ -1,33 +1,20 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Kuiklo",
-  description: "Your next amazing app",
+export const metadata = {
+  title: "Kuiklo — 10 Minute Grocery Delivery",
+  description: "Fresh groceries delivered in 10 minutes. No minimum order, always fresh, always fast.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} antialiased`} suppressHydrationWarning>
         {children}
       </body>
     </html>

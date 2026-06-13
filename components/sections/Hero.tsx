@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Image from "next/image";
-import { useState } from "react";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
     subsets: ["latin"],
@@ -52,11 +51,14 @@ const floatVariants = {
 };
 
 export default function Hero() {
-    const [imageError, setImageError] = useState(false);
-
     return (
-        <section className="min-h-screen bg-white pt-[120px] pb-20 px-6 md:px-16">
-            <div className="mx-auto max-w-[1280px]">
+        <section
+            className="hero-section min-h-screen pt-[120px] pb-20 px-6 md:px-16"
+            style={{ background: 'linear-gradient(135deg, #F0FFF4 0%, #FFFFFF 35%, #FFFBEB 65%, #F0FFF4 100%)' }}
+        >
+            <div className="hero-blob-1" />
+            <div className="hero-blob-2" />
+            <div className="hero-inner mx-auto max-w-[1280px]">
                 {/* @ts-ignore - Framer Motion className compatibility */}
                 <motion.div
                     className="grid grid-cols-1 md:grid-cols-[55%_45%] gap-20 items-center"
@@ -76,15 +78,31 @@ export default function Hero() {
                             variants={itemVariants}
                             className="mb-6 md:mb-6 inline-flex w-fit"
                         >
-                            <div className="flex items-center gap-2 rounded-full border border-[#0C831F] bg-[#E8F5E9] px-3 py-2">
+                            <div
+                                className="flex items-center gap-2"
+                                style={{
+                                    background: 'linear-gradient(135deg, #E8F5E9, #F1F8E9)',
+                                    border: '1.5px solid #0C831F',
+                                    boxShadow: '0 4px 16px rgba(12,131,31,0.2)',
+                                    padding: '8px 18px',
+                                    borderRadius: '50px'
+                                }}
+                            >
                                 <div className="relative h-2 w-2">
-                                    <div className="absolute inset-0 rounded-full bg-[#0C831F] animate-pulse"></div>
+                                    <div
+                                        className="absolute inset-0 rounded-full"
+                                        style={{
+                                            background: '#0C831F',
+                                            boxShadow: '0 0 0 3px rgba(12,131,31,0.2)',
+                                            animation: 'pulse 2s infinite'
+                                        }}
+                                    ></div>
                                 </div>
                                 <span
-                                    className="text-[13px] font-semibold text-[#0C831F]"
+                                    className="text-[13px] font-bold text-[#0C831F]"
                                     style={{ fontFamily: plusJakartaSans.style.fontFamily }}
                                 >
-                                    Now delivering in Patna
+                                    Now delivering near you
                                 </span>
                             </div>
                         </motion.div>
@@ -94,11 +112,11 @@ export default function Hero() {
                         <motion.h1
                             variants={itemVariants}
                             style={{ fontFamily: plusJakartaSans.style.fontFamily }}
-                            className="mb-6 text-[36px] md:text-[56px] font-black leading-[1.1] text-[#1C1C1C]"
+                            className="mb-6 text-[36px] md:text-[64px] font-[800] leading-[1.05] text-[#1C1C1C]"
                         >
                             Groceries in{" "}
                             <span className="text-[#0C831F]">10 Minutes.</span>{" "}
-                            Right at Your Door.
+                            <span className="text-[#1C1C1C]">Right at Your Door.</span>
                         </motion.h1>
 
                         {/* SUBTEXT */}
@@ -109,7 +127,7 @@ export default function Hero() {
                             className="mb-9 max-w-[480px] text-[16px] md:text-[18px] font-normal leading-[1.7] text-[#666666]"
                         >
                             From fresh vegetables to daily essentials — Kuiklo delivers it all
-                            across Patna before your chai gets cold. No minimum order, always
+                            straight to your door before your chai gets cold. No minimum order, always
                             fresh, always fast.
                         </motion.p>
 
@@ -120,37 +138,31 @@ export default function Hero() {
                             className="mb-12 flex flex-col md:flex-row gap-3 md:gap-3"
                         >
                             <a
-                                href="#"
+                                href="#download"
                                 aria-label="Download on Google Play"
-                                className="flex items-center justify-center md:justify-start gap-2.5 rounded-[12px] bg-[#1C1C1C] px-6 py-3.5 transition-all duration-200 hover:bg-[#333333] hover:-translate-y-0.5"
-                                style={{ fontFamily: plusJakartaSans.style.fontFamily }}
+                                className="flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:drop-shadow-[0_8px_16px_rgba(0,0,0,0.15)] active:scale-95 active:translate-y-0"
                             >
-                                <span className="text-lg">▶</span>
-                                <div className="flex flex-col">
-                                    <span className="text-[11px] font-normal opacity-70 text-white">
-                                        Get it on
-                                    </span>
-                                    <span className="text-[16px] font-bold text-white">
-                                        Google Play
-                                    </span>
-                                </div>
+                                <Image
+                                    src="/images/google-play-badge.svg"
+                                    alt="Get it on Google Play"
+                                    width={160}
+                                    height={53}
+                                    className="h-[53px] w-[160px]"
+                                />
                             </a>
 
                             <a
-                                href="#"
+                                href="#download"
                                 aria-label="Download on App Store"
-                                className="flex items-center justify-center md:justify-start gap-2.5 rounded-[12px] bg-[#1C1C1C] px-6 py-3.5 transition-all duration-200 hover:bg-[#333333] hover:-translate-y-0.5"
-                                style={{ fontFamily: plusJakartaSans.style.fontFamily }}
+                                className="flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:drop-shadow-[0_8px_16px_rgba(0,0,0,0.15)] active:scale-95 active:translate-y-0"
                             >
-                                <span className="text-lg">🍎</span>
-                                <div className="flex flex-col">
-                                    <span className="text-[11px] font-normal opacity-70 text-white">
-                                        Download on the
-                                    </span>
-                                    <span className="text-[16px] font-bold text-white">
-                                        App Store
-                                    </span>
-                                </div>
+                                <Image
+                                    src="/images/app-store-badge.svg"
+                                    alt="Download on the App Store"
+                                    width={160}
+                                    height={53}
+                                    className="h-[53px] w-[160px]"
+                                />
                             </a>
                         </motion.div>
 
@@ -159,37 +171,18 @@ export default function Hero() {
                         <motion.div
                             variants={itemVariants}
                             style={{ fontFamily: plusJakartaSans.style.fontFamily }}
-                            className="flex flex-wrap items-center gap-6 md:gap-6"
+                            className="flex flex-wrap items-center gap-[12px]"
                         >
-                            <div className="flex flex-col">
-                                <span className="text-[15px] font-bold text-[#1C1C1C]">
-                                    ⚡ 10 min delivery
-                                </span>
-                                <span className="text-[12px] font-normal text-[#666666]">
-                                    Lightning fast
-                                </span>
+                            <div className="hero-stat-pill hero-stat-green">
+                                ⚡ 10 min delivery
                             </div>
 
-                            <div className="hidden md:block w-px h-8 bg-[#E8E8E8]"></div>
-
-                            <div className="flex flex-col">
-                                <span className="text-[15px] font-bold text-[#1C1C1C]">
-                                    🛒 No minimum order
-                                </span>
-                                <span className="text-[12px] font-normal text-[#666666]">
-                                    Order anything
-                                </span>
+                            <div className="hero-stat-pill hero-stat-yellow">
+                                🛒 No minimum order
                             </div>
 
-                            <div className="hidden md:block w-px h-8 bg-[#E8E8E8]"></div>
-
-                            <div className="flex flex-col">
-                                <span className="text-[15px] font-bold text-[#1C1C1C]">
-                                    ⭐ 4.8 rated app
-                                </span>
-                                <span className="text-[12px] font-normal text-[#666666]">
-                                    Trusted by many
-                                </span>
+                            <div className="hero-stat-pill hero-stat-blue">
+                                ⭐ 4.8 rated app
                             </div>
                         </motion.div>
                     </motion.div>
@@ -201,31 +194,40 @@ export default function Hero() {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        className="flex justify-center items-center md:justify-center"
+                        className="flex justify-center items-center"
                     >
-                        <div className="relative w-full max-w-[280px] md:max-w-[320px]">
-                            <div className="rounded-[32px] bg-[#F7F7F7] p-6 flex justify-center items-center md:p-10">
-                                <div className="relative w-[260px] h-[520px] overflow-hidden rounded-[36px] border border-[#E8E8E8] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.10)]">
-                                    {!imageError ? (
-                                        <Image
-                                            src="/images/app-mockup.png"
-                                            alt="Kuiklo app — grocery delivery in Patna in 15 minutes"
-                                            width={260}
-                                            height={520}
-                                            onError={() => setImageError(true)}
-                                            priority
-                                            style={{ objectFit: "cover", objectPosition: "top" }}
-                                            className="w-full h-full"
-                                        />
-                                    ) : (
-                                        <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-green-50 to-green-100">
-                                            <div className="text-center">
-                                                <div className="text-6xl mb-4">📱</div>
-                                                <p className="text-sm text-gray-600">App Screenshot</p>
-                                                <p className="text-xs text-gray-500 mt-2">Place app-mockup.png in public/images</p>
-                                            </div>
-                                        </div>
-                                    )}
+                        <div
+                            className="relative flex justify-center items-center"
+                            style={{
+                                background: 'linear-gradient(145deg, #E8F5E9 0%, #F1F8E9 50%, #FFFDE7 100%)',
+                                borderRadius: '40px',
+                                padding: '48px 40px',
+                                border: '1px solid rgba(12,131,31,0.1)',
+                                boxShadow: '0 20px 60px rgba(12,131,31,0.08), 0 4px 20px rgba(0,0,0,0.04)'
+                            }}
+                        >
+                            <div
+                                className="phone-float relative origin-center scale-[0.85] lg:scale-100 transition-transform duration-300"
+                                style={{
+                                    width: '280px',
+                                    height: '620px',
+                                    background: '#000000',
+                                    borderRadius: '50px',
+                                    boxShadow: 'inset 0 0 2px 2px #505054, inset 0 0 0 6px #1A1A1D, 0 40px 80px rgba(0,0,0,0.5), 0 20px 40px rgba(0,0,0,0.3)',
+                                    padding: '10px',
+                                    overflow: 'visible'
+                                }}
+                            >
+                                {/* SCREEN CONTAINER */}
+                                <div className="relative w-full h-full bg-[#0C831F] rounded-[40px] overflow-hidden border border-[#111]">
+                                    {/* APP SCREENSHOT (No cropping because screen matches 722x1600 aspect ratio) */}
+                                    <Image
+                                        src="/images/app-mockup.png"
+                                        alt="Kuiklo app home screen"
+                                        fill
+                                        style={{ objectFit: 'cover', objectPosition: 'top' }}
+                                        priority
+                                    />
                                 </div>
                             </div>
 
@@ -234,9 +236,16 @@ export default function Hero() {
                             <motion.div
                                 variants={floatVariants}
                                 animate="animate"
-                                className="absolute -top-6 -right-24 hidden md:block"
+                                className="absolute -top-6 -right-16 md:-right-24 hidden md:block z-20"
                             >
-                                <div className="rounded-[14px] border border-[#E8E8E8] bg-white px-3.5 py-2.5 shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+                                <div
+                                    className="rounded-[14px] bg-white px-4 py-2.5"
+                                    style={{
+                                        border: '1px solid #E8E8E8',
+                                        borderLeft: '3px solid #0C831F',
+                                        boxShadow: '0 8px 24px rgba(0,0,0,0.1)'
+                                    }}
+                                >
                                     <span
                                         className="text-[13px] font-semibold text-[#1C1C1C]"
                                         style={{ fontFamily: plusJakartaSans.style.fontFamily }}
@@ -257,9 +266,16 @@ export default function Hero() {
                                     repeat: Infinity,
                                     delay: 1.5,
                                 }}
-                                className="absolute -bottom-8 -left-6 hidden md:block"
+                                className="absolute -bottom-8 -left-4 md:-left-6 hidden md:block z-20"
                             >
-                                <div className="rounded-[14px] border border-[#E8E8E8] bg-white px-3.5 py-2.5 shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+                                <div
+                                    className="rounded-[14px] bg-white px-4 py-2.5"
+                                    style={{
+                                        border: '1px solid #E8E8E8',
+                                        borderLeft: '3px solid #FFB800',
+                                        boxShadow: '0 8px 24px rgba(0,0,0,0.1)'
+                                    }}
+                                >
                                     <span
                                         className="text-[13px] font-semibold text-[#1C1C1C]"
                                         style={{ fontFamily: plusJakartaSans.style.fontFamily }}
